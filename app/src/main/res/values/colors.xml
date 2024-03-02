@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#232323</color>
+    <color name="white">#fafafa</color>
+
+    <!-- Inspired in GMK Olivia keycap set-->
+    <!-- Darker variant of the primary color -->
+    <color name="colorPrimaryDark">#171718</color>
+    <!-- Primary color for the app -->
+    <color name="colorPrimary">#171718</color>
+    <!-- Secondary color (Accent color) -->
+    <color name="colorSecondary">#c87e74</color>
+    <!-- Background color for the app or specific components -->
+    <color name="backgroundColor">#e1dbd1</color>
+</resources>
