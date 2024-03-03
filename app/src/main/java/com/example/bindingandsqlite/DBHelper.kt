@@ -13,7 +13,8 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		// Query string for table creation if not exists
 		val query:String = ("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
 				+ ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-				KB + " TEXT)")
+				KB + " TEXT, " +
+				PRICE + " REAL)")
 		// Execute query
 		db.execSQL(query)
 	}
@@ -25,9 +26,10 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 	}
 
 	// Add new Keyboard data to DataBase method
-	fun addKB(kb: String) {
+	fun addKB(kb: String, price:Float) {
 		val values = ContentValues()
 		values.put(KB, kb) // Set Values
+		values.put(PRICE, price)
 		// Writable variable to insert data into the DataBase
 		val db = this.writableDatabase
 		// Execute insert operation
@@ -62,5 +64,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		val TABLE_NAME = "keyboards_inventory" // Table name
 		val ID = "id" // Table's attribute
 		val KB = "name" // Table's attribute
+		val PRICE = "price" // Table's attribute
 	}
 }
