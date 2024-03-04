@@ -57,6 +57,13 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		return count
 	}
 
+	// Remove an entry by its ID number
+	fun removeKB(id:Int) {
+		val query = "DELETE FROM $TABLE_NAME WHERE $ID = $id"
+		val db = this.readableDatabase
+		db.execSQL(query)
+	}
+
 	// DataBase variable definition -> This class is meant to store all needed elements to retrieve the DataBase information and connect to it
 	companion object {
 		private val DATABASE_NAME = "KEYBOARDS" // DB Name
