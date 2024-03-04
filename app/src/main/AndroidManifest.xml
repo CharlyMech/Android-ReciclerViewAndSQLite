@@ -27,6 +27,11 @@
             android:name=".InventoryActivity"
             android:parentActivityName=".MainActivity">
         </activity>
+        <!-- UpdateActivity -->
+        <activity
+            android:name=".UpdateActivity"
+            android:parentActivityName=".InventoryActivity">
+        </activity>
     </application>
 
 </manifest>

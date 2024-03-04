@@ -1,16 +1,19 @@
 package com.example.bindingandsqlite.adapter
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.bindingandsqlite.DBHelper
 import com.example.bindingandsqlite.Keyboard
 import com.example.bindingandsqlite.KeyboardProvider.Companion.keyboards
 import com.example.bindingandsqlite.R
+import com.example.bindingandsqlite.UpdateActivity
 
 class KeyboardViewHolder(view: View) : ViewHolder(view) {
 	// Class variables
@@ -51,7 +54,13 @@ class KeyboardViewHolder(view: View) : ViewHolder(view) {
 			alertDialog.show()
 		}
 		edit.setOnClickListener {
-			Toast.makeText(edit.context, "EDIT", Toast.LENGTH_SHORT).show()
+			val intent = Intent(edit.context, UpdateActivity::class.java)
+			// Pass data to UpdateActivity
+			intent.putExtra("ID", keyboard.id)
+			intent.putExtra("KB", keyboard.kb)
+			intent.putExtra("PRICE", keyboard.price)
+
+			edit.context.startActivity(intent)
 		}
 	}
 

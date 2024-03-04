@@ -5,4 +5,6 @@
     <string name="price_hint">Insert the keyboard price</string>
     <string name="add_kb">Add Keyboard</string>
     <string name="show_kbs">Show Inventory</string>
+    <string name="update_title">Update Keyboard</string>
+    <string name="update_kb">Update</string>
 </resources>

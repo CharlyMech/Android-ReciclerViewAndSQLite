@@ -62,6 +62,20 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 		val query = "DELETE FROM $TABLE_NAME WHERE $ID = $id"
 		val db = this.readableDatabase
 		db.execSQL(query)
+		db.close()
+	}
+
+	// Update an entry by its ID number and passing its parameters
+	fun updateKB(id: Int, name: String, price: Float) {
+		val values = ContentValues()
+		values.put(KB, name) // Set Values
+		values.put(PRICE, price)
+		// Writable variable to insert data into the DataBase
+		val db = this.writableDatabase
+		// Execute insert operation
+		db.update(TABLE_NAME, values, "$ID=?", arrayOf(id.toString()))
+		// Close DataBase writable variable
+		db.close()
 	}
 
 	// DataBase variable definition -> This class is meant to store all needed elements to retrieve the DataBase information and connect to it
