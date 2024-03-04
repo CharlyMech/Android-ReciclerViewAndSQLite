@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import com.example.bindingandsqlite.KeyboardProvider.Companion.keyboards
 
 class MainActivity : AppCompatActivity() {
 	// Class variables
@@ -21,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
+
+		// Clear the keyboards companion to get resources free
+		keyboards.clear()
 
 		// Get all elements from activity layout file
 		this.toolbar = findViewById(R.id.toolbar)
@@ -37,14 +41,12 @@ class MainActivity : AppCompatActivity() {
 			// Get both fields text
 			val kbText:String = this.kb.text.toString()
 			val priceText:String = this.price.text.toString()
-			print(kbText)
-			print(priceText)
 			// Check if anyone of those is empty
 			if(kbText.isEmpty() || priceText.isEmpty()) {
 				this.makeToast("Please fill all inputs to add new keyboard")
 			} else {
 				this.addNewKeyboard(kbText, priceText.toFloat())
-				this.makeToast("ADDED")
+				this.makeToast("New Keyboard added!")
 			}
 		}
 		this.showInventoryBtn.setOnClickListener{
@@ -61,6 +63,12 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	private fun addNewKeyboard(name:String, price:Float) {
+		// Get the current number of stored values
+		val db = DBHelper(this, null)
+		db.addKB(name, price)
+		// Clear fields
+		this.kb.text.clear()
+		this.price.text.clear()
 	}
 
 	private fun showInventory() {

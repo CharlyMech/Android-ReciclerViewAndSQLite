@@ -10,8 +10,8 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 	SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 	// Create SQLite DataBase method
 	override fun onCreate(db: SQLiteDatabase) {
-		// Query string for table creation if not exists
-		val query:String = ("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+		// Query string for table creation
+		val query:String = ("CREATE TABLE " + TABLE_NAME + " ("
 				+ ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				KB + " TEXT, " +
 				PRICE + " REAL)")
